@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MERCH - RYUZKA.XYZ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with animated title -->
+        <header class="header">
+            <div class="glitch-container">
+                <h1 class="glitch" data-text="RYUZKA.XYZ">RYUZKA.XYZ</h1>
+            </div>
+            <div class="subtitle">
+                <span class="typing-text">MERCHANDISE SHOP</span>
+                <span class="cursor">|</span>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="index.html" class="nav-link">INICIO</a>
+                <a href="terminos.html" class="nav-link">TÉRMINOS</a>
+                <a href="gallery.html" class="nav-link">GALERÍA</a>
+                <a href="merch.html" class="nav-link active">MERCH</a>
+                <a href="status.html" class="nav-link">ESTADO</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Merch Header -->
+            <div class="terms-box">
+                <div class="box-header">
+                    <span class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </span>
+                    <span class="window-title">merch_catalog.exe</span>
+                </div>
+                <div class="box-content">
+                    <h2 class="section-title">MERCHANDISE DISPONIBLE</h2>
+                    <p class="intro-text">
+                        ¡Lleva mis diseños contigo! Aquí puedes ver algunos productos disponibles con mis ilustraciones. 
+                        Todos los productos son bajo pedido y <span class="highlight">fabricados con materiales de alta calidad</span>. 
+                        Para hacer un pedido, contáctame a través de mis redes sociales con el código del producto que te interese.
+                    </p>
+                    <div class="merch-notice">
+                        <span class="notice-icon">📦</span>
+                        <span class="notice-text">TODOS LOS PRODUCTOS SON BAJO PEDIDO - CONTACTA PARA DISPONIBILIDAD</span>
+                    </div>
+                    <div class="divider">
+                        <span class="divider-text">CATÁLOGO DE PRODUCTOS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Categories -->
+            <div class="section-box">
+                <div class="box-header">
+                    <span class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </span>
+                    <span class="window-title">product_filters.cfg</span>
+                </div>
+                <div class="box-content">
+                    <div class="gallery-filters">
+                        <h3 class="subsection-title">FILTRAR POR CATEGORÍA</h3>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all">
+                                <span class="filter-icon">🛍️</span>
+                                <span class="filter-text">TODOS</span>
+                            </button>
+                            <button class="filter-btn" data-filter="clothing">
+                                <span class="filter-icon">👕</span>
+                                <span class="filter-text">ROPA</span>
+                            </button>
+                            <button class="filter-btn" data-filter="accessories">
+                                <span class="filter-icon">🎒</span>
+                                <span class="filter-text">ACCESORIOS</span>
+                            </button>
+                            <button class="filter-btn" data-filter="prints">
+                                <span class="filter-icon">🖼️</span>
+                                <span class="filter-text">PRINTS</span>
+                            </button>
+                            <button class="filter-btn" data-filter="stickers">
+                                <span class="filter-icon">🏷️</span>
+                                <span class="filter-text">STICKERS</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Merch Grid -->
+            <div class="section-box">
+                <div class="box-header">
+                    <span class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </span>
+                    <span class="window-title">product_database.db</span>
+                </div>
+                <div class="box-content">
+                    <div class="merch-grid" id="merchGrid">
+                        
+                        <!-- Merch Item 1 -->
+                        <div class="merch-item" data-category="clothing">
+                            <div class="merch-image-container">
+                                <div class="merch-placeholder">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">👕</span>
+                                        <span class="placeholder-text">HOODIE RYUZKA</span>
+                                        <div class="placeholder-details">
+                                            <p>Sudadera con capucha</p>
+                                            <p>Diseño exclusivo</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="merch-overlay">
+                                    <div class="merch-info">
+                                        <h4 class="merch-title">Hoodie Edición Limitada</h4>
+                                        <p class="merch-description">Sudadera premium con diseño original de Ryuzka. Material 100% algodón, impresión de alta calidad.</p>
+                                        <div class="merch-price">$45.00 USD</div>
+                                        <div class="merch-code">Código: HOD-001</div>
+                                        <div class="merch-sizes">
+                                            <span class="size-label">Tallas:</span>
+                                            <span class="size">S</span>
+                                            <span class="size">M</span>
+                                            <span class="size">L</span>
+                                            <span class="size">XL</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Merch Item 2 -->
+                        <div class="merch-item" data-category="accessories">
+                            <div class="merch-image-container">
+                                <div class="merch-placeholder">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">🎒</span>
+                                        <span class="placeholder-text">TOTE BAG</span>
+                                        <div class="placeholder-details">
+                                            <p>Bolsa de tela</p>
+                                            <p>Arte original</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="merch-overlay">
+                                    <div class="merch-info">
+                                        <h4 class="merch-title">Tote Bag Artístico</h4>
+                                        <p class="merch-description">Bolsa de tela resistente con ilustración exclusiva. Perfecta para el día a día.</p>
+                                        <div class="merch-price">$18.00 USD</div>
+                                        <div class="merch-code">Código: BAG-001</div>
+                                        <div class="merch-specs">
+                                            <span class="spec">40cm x 35cm</span>
+                                            <span class="spec">Algodón 100%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Merch Item 3 -->
+                        <div class="merch-item" data-category="prints">
+                            <div class="merch-image-container">
+                                <div class="merch-placeholder">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">🖼️</span>
+                                        <span class="placeholder-text">ART PRINT</span>
+                                        <div class="placeholder-details">
+                                            <p>Impresión de arte</p>
+                                            <p>Papel premium</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="merch-overlay">
+                                    <div class="merch-info">
+                                        <h4 class="merch-title">Print Colección Fantasía</h4>
+                                        <p class="merch-description">Impresión de alta calidad en papel mate premium. Ideal para decorar tu espacio.</p>
+                                        <div class="merch-price">$25.00 USD</div>
+                                        <div class="merch-code">Código: PRT-001</div>
+                                        <div class="merch-sizes">
+                                            <span class="size-label">Tamaños:</span>
+                                            <span class="size">A4</span>
+                                            <span class="size">A3</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Merch Item 4 -->
+                        <div class="merch-item" data-category="stickers">
+                            <div class="merch-image-container">
+                                <div class="merch-placeholder">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">🏷️</span>
+                                        <span class="placeholder-text">STICKER PACK</span>
+                                        <div class="placeholder-details">
+                                            <p>Pack de stickers</p>
+                                            <p>5 diseños únicos</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="merch-overlay">
+                                    <div class="merch-info">
+                                        <h4 class="merch-title">Pack Stickers Chibi</h4>
+                                        <p class="merch-description">Set de 5 stickers con diseños chibi exclusivos. Resistentes al agua y rayones.</p>
+                                        <div class="merch-price">$8.00 USD</div>
+                                        <div class="merch-code">Código: STK-001</div>
+                                        <div class="merch-specs">
+                                            <span class="spec">5 diseños</span>
+                                            <span class="spec">Vinilo premium</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Merch Item 5 -->
+                        <div class="merch-item" data-category="clothing">
+                            <div class="merch-image-container">
+                                <div class="merch-placeholder">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">👕</span>
+                                        <span class="placeholder-text">CAMISETA ANIME</span>
+                                        <div class="placeholder-details">
+                                            <p>T-shirt oversize</p>
+                                            <p>Estampado frontal</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="merch-overlay">
+                                    <div class="merch-info">
+                                        <h4 class="merch-title">Camiseta Waifu Collection</h4>
+                                        <p class="merch-description">Camiseta oversized con estampado de personaje original. Corte cómodo y moderno.</p>
+                                        <div class="merch-price">$28.00 USD</div>
+                                        <div class="merch-code">Código: TEE-001</div>
+                                        <div class="merch-sizes">
+                                            <span class="size-label">Tallas:</span>
+                                            <span class="size">S</span>
+                                            <span class="size">M</span>
+                                            <span class="size">L</span>
+                                            <span class="size">XL</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Merch Item 6 -->
+                        <div class="merch-item" data-category="accessories">
+                            <div class="merch-image-container">
+                                <div class="merch-placeholder">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">☕</span>
+                                        <span class="placeholder-text">TAZA MÁGICA</span>
+                                        <div class="placeholder-details">
+                                            <p>Taza térmica</p>
+                                            <p>Cambia con calor</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="merch-overlay">
+                                    <div class="merch-info">
+                                        <h4 class="merch-title">Taza Mágica Transformación</h4>
+                                        <p class="merch-description">Taza que revela un diseño oculto al llenarse con líquido caliente. Efecto sorpresa garantizado.</p>
+                                        <div class="merch-price">$22.00 USD</div>
+                                        <div class="merch-code">Código: MUG-001</div>
+                                        <div class="merch-specs">
+                                            <span class="spec">325ml</span>
+                                            <span class="spec">Apto lavavajillas</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Merch Item 7 -->
+                        <div class="merch-item" data-category="prints">
+                            <div class="merch-image-container">
+                                <div class="merch-placeholder">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">📱</span>
+                                        <span class="placeholder-text">MOUSEPAD</span>
+                                        <div class="placeholder-details">
+                                            <p>Alfombrilla gaming</p>
+                                            <p>Base antideslizante</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="merch-overlay">
+                                    <div class="merch-info">
+                                        <h4 class="merch-title">Mousepad Gaming Waifu</h4>
+                                        <p class="merch-description">Alfombrilla de ratón premium con ilustración exclusiva. Base de goma antideslizante.</p>
+                                        <div class="merch-price">$15.00 USD</div>
+                                        <div class="merch-code">Código: PAD-001</div>
+                                        <div class="merch-specs">
+                                            <span class="spec">900x400mm</span>
+                                            <span class="spec">3mm grosor</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Merch Item 8 -->
+                        <div class="merch-item" data-category="accessories">
+                            <div class="merch-image-container">
+                                <div class="merch-placeholder">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">🧢</span>
+                                        <span class="placeholder-text">GORRA RYUZKA</span>
+                                        <div class="placeholder-details">
+                                            <p>Snapback premium</p>
+                                            <p>Bordado 3D</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="merch-overlay">
+                                    <div class="merch-info">
+                                        <h4 class="merch-title">Gorra Snapback Logo</h4>
+                                        <p class="merch-description">Gorra snapback con logo bordado en 3D. Ajuste cómodo y diseño urbano moderno.</p>
+                                        <div class="merch-price">$32.00 USD</div>
+                                        <div class="merch-code">Código: CAP-001</div>
+                                        <div class="merch-specs">
+                                            <span class="spec">Talla única</span>
+                                            <span class="spec">Bordado 3D</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- How to Order -->
+            <div class="section-box">
+                <div class="box-header">
+                    <span class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </span>
+                    <span class="window-title">order_process.exe</span>
+                </div>
+                <div class="box-content">
+                    <h3 class="subsection-title">¿CÓMO HACER UN PEDIDO?</h3>
+                    
+                    <div class="order-steps">
+                        <div class="order-step">
+                            <div class="step-number">01</div>
+                            <div class="step-content">
+                                <h4 class="step-title">ELIGE TU PRODUCTO</h4>
+                                <p class="step-description">Navega por el catálogo y anota el código del producto que te interese</p>
+                            </div>
+                        </div>
+
+                        <div class="order-step">
+                            <div class="step-number">02</div>
+                            <div class="step-content">
+                                <h4 class="step-title">CONTÁCTAME</h4>
+                                <p class="step-description">Envíame un mensaje por mis redes sociales con el código del producto y tus datos</p>
+                            </div>
+                        </div>
+
+                        <div class="order-step">
+                            <div class="step-number">03</div>
+                            <div class="step-content">
+                                <h4 class="step-title">CONFIRMA TU PEDIDO</h4>
+                                <p class="step-description">Te enviaré un mockup del producto y cotización final con envío incluido</p>
+                            </div>
+                        </div>
+
+                        <div class="order-step">
+                            <div class="step-number">04</div>
+                            <div class="step-content">
+                                <h4 class="step-title">PAGO Y PRODUCCIÓN</h4>
+                                <p class="step-description">Una vez confirmado el pago, comenzamos la producción (5-10 días hábiles)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shipping-info">
+                        <h4 class="shipping-title">📦 INFORMACIÓN DE ENVÍO</h4>
+                        <div class="shipping-details">
+                            <div class="shipping-item">
+                                <span class="shipping-icon">🌎</span>
+                                <span class="shipping-text">Envíos internacionales disponibles</span>
+                            </div>
+                            <div class="shipping-item">
+                                <span class="shipping-icon">⏰</span>
+                                <span class="shipping-text">Tiempo de producción: 5-10 días hábiles</span>
+                            </div>
+                            <div class="shipping-item">
+                                <span class="shipping-icon">📋</span>
+                                <span class="shipping-text">Tracking incluido en todos los envíos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact CTA -->
+            <div class="contact-cta">
+                <div class="cta-content">
+                    <h3 class="cta-title">¿LISTO PARA TU PEDIDO?</h3>
+                    <p class="cta-text">Contacta conmigo con el código del producto que te interese</p>
+                    <a href="index.html#contact" class="cta-button">
+                        <span class="cta-icon">🛒</span>
+                        <span class="cta-button-text">HACER PEDIDO</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="footer-text">© 2025 RYUZKA.XYZ - All rights reserved</p>
+                <div class="visitor-counter">
+                    <span class="counter-text">VISITORS: </span>
+                    <span class="counter-number">001337</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

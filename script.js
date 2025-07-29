@@ -216,7 +216,514 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('If you can see this, you\'re probably a developer too :)');
     console.log('Commission status: OPEN');
     console.log('Last updated: 2025');
+
+    // Gallery functionality
+    initializeGallery();
+    
+    // Merch functionality
+    initializeMerch();
+    
+    // Status functionality
+    initializeStatus();
 });
+
+// Merch Functions
+function initializeMerch() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const merchItems = document.querySelectorAll('.merch-item');
+
+    // Filter functionality for merch
+    if (filterButtons.length && merchItems.length) {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter merch items
+                filterMerchItems(filter, merchItems);
+                
+                // Add glitch effect to button
+                addGlitchEffect(this);
+            });
+        });
+    }
+
+    // Merch item hover effects
+    merchItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 15px 40px rgba(255, 0, 255, 0.4)';
+            
+            // Add random glitch effect to price
+            const price = this.querySelector('.merch-price');
+            if (price && Math.random() < 0.3) {
+                const originalText = price.textContent;
+                price.style.animation = 'glitch-skew 0.2s ease';
+                setTimeout(() => {
+                    price.style.animation = '';
+                }, 200);
+            }
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '';
+        });
+
+        // Copy product code on click
+        item.addEventListener('click', function() {
+            const codeElement = this.querySelector('.merch-code');
+            if (codeElement) {
+                const code = codeElement.textContent.replace('Código: ', '');
+                copyToClipboard(code);
+                
+                // Show feedback
+                showCopyFeedback(this, code);
+            }
+        });
+    });
+
+    // Order step animations
+    const orderSteps = document.querySelectorAll('.order-step');
+    orderSteps.forEach((step, index) => {
+        step.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateX(10px)';
+            
+            // Animate step number
+            const stepNumber = this.querySelector('.step-number');
+            if (stepNumber) {
+                stepNumber.style.animation = 'pulse 0.6s ease';
+            }
+        });
+        
+        step.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateX(0)';
+        });
+    });
+}
+
+function filterMerchItems(filter, items) {
+    items.forEach(item => {
+        const category = item.getAttribute('data-category');
+        
+        if (filter === 'all' || category === filter) {
+            item.style.display = 'block';
+            item.style.animation = 'fadeInUp 0.6s ease';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+function copyToClipboard(text) {
+    // Create temporary textarea for copying
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+}
+
+function showCopyFeedback(element, code) {
+    // Create feedback element
+    const feedback = document.createElement('div');
+    feedback.className = 'copy-feedback';
+    feedback.innerHTML = `
+        <span class="feedback-icon">📋</span>
+        <span class="feedback-text">Código ${code} copiado!</span>
+    `;
+    feedback.style.cssText = `
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #50fa7b;
+        color: #000;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-family: 'VT323', monospace;
+        font-size: 0.9rem;
+        z-index: 1000;
+        animation: copyFeedback 2s ease forwards;
+        pointer-events: none;
+    `;
+    
+    element.style.position = 'relative';
+    element.appendChild(feedback);
+    
+    // Remove feedback after animation
+    setTimeout(() => {
+        if (feedback.parentNode) {
+            feedback.parentNode.removeChild(feedback);
+        }
+    }, 2000);
+}
+
+// Add CSS animations for merch
+const merchStyles = document.createElement('style');
+merchStyles.textContent = `
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    
+    @keyframes copyFeedback {
+        0% {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        20% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        80% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+    }
+    
+    .merch-item {
+        cursor: pointer;
+    }
+    
+    .merch-item:hover .merch-code {
+        color: #50fa7b;
+    }
+`;
+document.head.appendChild(merchStyles);
+
+// Status Functions
+function initializeStatus() {
+    const boardButtons = document.querySelectorAll('.board-btn');
+    const embedContainers = document.querySelectorAll('.embed-container');
+
+    // Board selector functionality
+    if (boardButtons.length) {
+        boardButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const boardType = this.getAttribute('data-board');
+                
+                // Update active button
+                boardButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show corresponding embed container
+                showEmbedContainer(boardType, embedContainers);
+                
+                // Add glitch effect to button
+                addGlitchEffect(this);
+            });
+        });
+    }
+
+    // Simulate real-time status updates
+    updateStatusIndicator();
+    setInterval(updateStatusIndicator, 30000); // Update every 30 seconds
+
+    // Animate stats on load
+    animateStats();
+}
+
+function showEmbedContainer(boardType, containers) {
+    containers.forEach(container => {
+        if (container.id === `${boardType}-embed`) {
+            container.style.display = 'block';
+            container.style.animation = 'fadeInUp 0.6s ease';
+        } else {
+            container.style.display = 'none';
+        }
+    });
+}
+
+function updateStatusIndicator() {
+    const statusDot = document.querySelector('.status-dot');
+    const statusValue = document.querySelector('.status-value');
+    
+    if (!statusDot || !statusValue) return;
+
+    // Simulate different status states
+    const statuses = [
+        { class: 'online', text: 'ACEPTANDO COMISIONES', probability: 0.7 },
+        { class: 'busy', text: 'OCUPADO - POCAS SLOTS', probability: 0.2 },
+        { class: 'offline', text: 'CERRADO TEMPORALMENTE', probability: 0.1 }
+    ];
+
+    const random = Math.random();
+    let currentStatus = statuses[0]; // Default to online
+
+    let cumulative = 0;
+    for (const status of statuses) {
+        cumulative += status.probability;
+        if (random < cumulative) {
+            currentStatus = status;
+            break;
+        }
+    }
+
+    // Update status indicator
+    statusDot.className = `status-dot ${currentStatus.class}`;
+    statusValue.className = `status-value ${currentStatus.class}`;
+    statusValue.textContent = currentStatus.text;
+
+    // Add glitch effect occasionally
+    if (Math.random() < 0.1) {
+        statusValue.style.animation = 'glitch-skew 0.3s ease';
+        setTimeout(() => {
+            statusValue.style.animation = '';
+        }, 300);
+    }
+}
+
+function animateStats() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    statNumbers.forEach((stat, index) => {
+        const finalValue = parseInt(stat.textContent);
+        stat.textContent = '0';
+        
+        setTimeout(() => {
+            animateNumber(stat, 0, finalValue, 1000);
+        }, index * 200);
+    });
+}
+
+function animateNumber(element, start, end, duration) {
+    const startTime = performance.now();
+    
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const current = Math.floor(start + (end - start) * progress);
+        element.textContent = current;
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        }
+    }
+    
+    requestAnimationFrame(update);
+}
+
+// Add CSS animations for status page
+const statusStyles = document.createElement('style');
+statusStyles.textContent = `
+    @keyframes statusPulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.7; }
+        100% { opacity: 1; }
+    }
+    
+    .embed-container {
+        animation: fadeInUp 0.6s ease;
+    }
+    
+    .board-card:hover,
+    .grid-card:hover,
+    .github-issue:hover {
+        transform: translateX(5px);
+        background: #2a2a2a !important;
+    }
+`;
+document.head.appendChild(statusStyles);
+
+// Gallery Functions
+function initializeGallery() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const loadMoreBtn = document.querySelector('.load-more-btn');
+
+    // Filter functionality
+    if (filterButtons.length) {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter gallery items
+                filterGalleryItems(filter, galleryItems);
+                
+                // Add glitch effect to button
+                addGlitchEffect(this);
+            });
+        });
+    }
+
+    // Load more functionality
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function() {
+            // Simulate loading more items
+            this.innerHTML = '<span class="load-icon">⏳</span><span class="load-text">CARGANDO...</span>';
+            
+            setTimeout(() => {
+                // Create more gallery items (simulated)
+                createMoreGalleryItems();
+                this.innerHTML = '<span class="load-icon">⬇️</span><span class="load-text">CARGAR MÁS TRABAJOS</span>';
+            }, 2000);
+        });
+    }
+
+    // NSFW content toggle
+    const nsfwItems = document.querySelectorAll('[data-category="nsfw"]');
+    nsfwItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const placeholder = this.querySelector('.nsfw-placeholder');
+            if (placeholder) {
+                placeholder.style.filter = placeholder.style.filter ? '' : 'blur(0px)';
+                if (!placeholder.style.filter) {
+                    const warning = this.querySelector('.nsfw-warning');
+                    if (warning) warning.style.display = 'none';
+                }
+            }
+        });
+    });
+
+    // Gallery item hover sound effects
+    galleryItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 15px 40px rgba(255, 0, 255, 0.4)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '';
+        });
+    });
+}
+
+function filterGalleryItems(filter, items) {
+    items.forEach(item => {
+        const category = item.getAttribute('data-category');
+        
+        if (filter === 'all' || category === filter) {
+            item.style.display = 'block';
+            item.style.animation = 'fadeInUp 0.6s ease';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+function addGlitchEffect(element) {
+    element.style.animation = 'glitch-skew 0.3s ease';
+    setTimeout(() => {
+        element.style.animation = '';
+    }, 300);
+}
+
+function createMoreGalleryItems() {
+    const galleryGrid = document.getElementById('galleryGrid');
+    if (!galleryGrid) return;
+
+    const newItems = [
+        {
+            category: 'commission',
+            icon: '🎨',
+            title: 'COMMISSION #003',
+            subtitle: 'Fantasy Character',
+            client: 'Cliente: @fantasy_lover',
+            fullTitle: 'Guerrero Élfico',
+            description: 'Diseño completo de guerrero élfico con armadura detallada y armas mágicas.',
+            tags: ['Fantasy', 'Detailed']
+        },
+        {
+            category: 'sketch',
+            icon: '✏️',
+            title: 'SKETCH #002',
+            subtitle: 'Speed Drawing',
+            client: 'Práctica Rápida',
+            fullTitle: 'Estudios de Expresión',
+            description: 'Serie de bocetos explorando diferentes expresiones faciales y emociones.',
+            tags: ['Expression', 'Study']
+        },
+        {
+            category: 'personal',
+            icon: '⭐',
+            title: 'PERSONAL #003',
+            subtitle: 'Environment Art',
+            client: 'Proyecto Personal',
+            fullTitle: 'Paisaje Cyberpunk',
+            description: 'Exploración de ambientes futuristas con estética cyberpunk.',
+            tags: ['Environment', 'Cyberpunk']
+        }
+    ];
+
+    newItems.forEach(itemData => {
+        const galleryItem = document.createElement('div');
+        galleryItem.className = 'gallery-item';
+        galleryItem.setAttribute('data-category', itemData.category);
+        galleryItem.style.opacity = '0';
+
+        galleryItem.innerHTML = `
+            <div class="gallery-image-container">
+                <div class="gallery-placeholder">
+                    <div class="placeholder-content">
+                        <span class="placeholder-icon">${itemData.icon}</span>
+                        <span class="placeholder-text">${itemData.title}</span>
+                        <div class="placeholder-details">
+                            <p>${itemData.subtitle}</p>
+                            <p>${itemData.client}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                        <h4 class="gallery-title">${itemData.fullTitle}</h4>
+                        <p class="gallery-description">${itemData.description}</p>
+                        <div class="gallery-tags">
+                            ${itemData.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        galleryGrid.appendChild(galleryItem);
+
+        // Animate in
+        setTimeout(() => {
+            galleryItem.style.opacity = '1';
+            galleryItem.style.animation = 'fadeInUp 0.6s ease';
+        }, 100);
+
+        // Add hover effects
+        galleryItem.addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 15px 40px rgba(255, 0, 255, 0.4)';
+        });
+        
+        galleryItem.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '';
+        });
+    });
+}
+
+// Add CSS animations for gallery
+const galleryStyles = document.createElement('style');
+galleryStyles.textContent = `
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .gallery-item {
+        animation: fadeInUp 0.6s ease;
+    }
+`;
+document.head.appendChild(galleryStyles);
 
 // Easter egg: Konami code
 let konamiCode = [];

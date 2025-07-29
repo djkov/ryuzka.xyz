@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GALERÍA - RYUZKA.XYZ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with animated title -->
+        <header class="header">
+            <div class="glitch-container">
+                <h1 class="glitch" data-text="RYUZKA.XYZ">RYUZKA.XYZ</h1>
+            </div>
+            <div class="subtitle">
+                <span class="typing-text">GALERÍA DE TRABAJOS</span>
+                <span class="cursor">|</span>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="index.html" class="nav-link">INICIO</a>
+                <a href="terminos.html" class="nav-link">TÉRMINOS</a>
+                <a href="gallery.html" class="nav-link active">GALERÍA</a>
+                <a href="merch.html" class="nav-link">MERCH</a>
+                <a href="status.html" class="nav-link">ESTADO</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Gallery Header -->
+            <div class="terms-box">
+                <div class="box-header">
+                    <span class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </span>
+                    <span class="window-title">gallery_viewer.exe</span>
+                </div>
+                <div class="box-content">
+                    <h2 class="section-title">GALERÍA DE TRABAJOS</h2>
+                    <p class="intro-text">
+                        Aquí puedes ver algunos de mis trabajos más recientes. Cada pieza representa horas de dedicación y colaboración con mis clientes. 
+                        Si te gusta algún estilo en particular, ¡no dudes en <span class="highlight">contactarme</span> para discutir tu próxima comisión!
+                    </p>
+                    <div class="divider">
+                        <span class="divider-text">TRABAJOS DESTACADOS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Categories -->
+            <div class="section-box">
+                <div class="box-header">
+                    <span class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </span>
+                    <span class="window-title">filter_options.cfg</span>
+                </div>
+                <div class="box-content">
+                    <div class="gallery-filters">
+                        <h3 class="subsection-title">FILTRAR POR CATEGORÍA</h3>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all">
+                                <span class="filter-icon">🎨</span>
+                                <span class="filter-text">TODOS</span>
+                            </button>
+                            <button class="filter-btn" data-filter="commission">
+                                <span class="filter-icon">💰</span>
+                                <span class="filter-text">COMISIONES</span>
+                            </button>
+                            <button class="filter-btn" data-filter="personal">
+                                <span class="filter-icon">⭐</span>
+                                <span class="filter-text">PERSONAL</span>
+                            </button>
+                            <button class="filter-btn" data-filter="sketch">
+                                <span class="filter-icon">✏️</span>
+                                <span class="filter-text">BOCETOS</span>
+                            </button>
+                            <button class="filter-btn" data-filter="nsfw">
+                                <span class="filter-icon">🔞</span>
+                                <span class="filter-text">NSFW</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="section-box">
+                <div class="box-header">
+                    <span class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </span>
+                    <span class="window-title">image_gallery.db</span>
+                </div>
+                <div class="box-content">
+                    <div class="gallery-grid" id="galleryGrid">
+                        
+                        <!-- Gallery Item 1 -->
+                        <div class="gallery-item" data-category="commission">
+                            <div class="gallery-image-container">
+                                <div class="gallery-placeholder">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">🎨</span>
+                                        <span class="placeholder-text">COMMISSION #001</span>
+                                        <div class="placeholder-details">
+                                            <p>Character Design</p>
+                                            <p>Cliente: @usuario123</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="gallery-info">
+                                        <h4 class="gallery-title">Diseño de Personaje Original</h4>
+                                        <p class="gallery-description">Comisión completa con diseño de personaje, colores personalizados y múltiples poses.</p>
+                                        <div class="gallery-tags">
+                                            <span class="tag">OC Design</span>
+                                            <span class="tag">Full Color</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gallery Item 2 -->
+                        <div class="gallery-item" data-category="personal">
+                            <div class="gallery-image-container">
+                                <div class="gallery-placeholder">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">⭐</span>
+                                        <span class="placeholder-text">PERSONAL #001</span>
+                                        <div class="placeholder-details">
+                                            <p>Fan Art</p>
+                                            <p>Proyecto Personal</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="gallery-info">
+                                        <h4 class="gallery-title">Fan Art Experimental</h4>
+                                        <p class="gallery-description">Exploración de estilo y técnicas nuevas con personaje de anime popular.</p>
+                                        <div class="gallery-tags">
+                                            <span class="tag">Fan Art</span>
+                                            <span class="tag">Experimental</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gallery Item 3 -->
+                        <div class="gallery-item" data-category="sketch">
+                            <div class="gallery-image-container">
+                                <div class="gallery-placeholder">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">✏️</span>
+                                        <span class="placeholder-text">SKETCH #001</span>
+                                        <div class="placeholder-details">
+                                            <p>Boceto Rápido</p>
+                                            <p>Práctica Diaria</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="gallery-info">
+                                        <h4 class="gallery-title">Bocetos de Práctica</h4>
+                                        <p class="gallery-description">Serie de bocetos rápidos para explorar poses y expresiones.</p>
+                                        <div class="gallery-tags">
+                                            <span class="tag">Sketch</span>
+                                            <span class="tag">Practice</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gallery Item 4 -->
+                        <div class="gallery-item" data-category="commission">
+                            <div class="gallery-image-container">
+                                <div class="gallery-placeholder">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">🎨</span>
+                                        <span class="placeholder-text">COMMISSION #002</span>
+                                        <div class="placeholder-details">
+                                            <p>Couple Commission</p>
+                                            <p>Cliente: @pareja_anime</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="gallery-info">
+                                        <h4 class="gallery-title">Comisión de Pareja</h4>
+                                        <p class="gallery-description">Ilustración romántica de dos personajes originales con fondo detallado.</p>
+                                        <div class="gallery-tags">
+                                            <span class="tag">Couple</span>
+                                            <span class="tag">Background</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gallery Item 5 -->
+                        <div class="gallery-item" data-category="nsfw">
+                            <div class="gallery-image-container">
+                                <div class="gallery-placeholder nsfw-placeholder">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">🔞</span>
+                                        <span class="placeholder-text">NSFW #001</span>
+                                        <div class="placeholder-details">
+                                            <p>Contenido Adulto</p>
+                                            <p>Click para revelar</p>
+                                        </div>
+                                    </div>
+                                    <div class="nsfw-warning">
+                                        <span class="warning-text">CONTENIDO +18</span>
+                                    </div>
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="gallery-info">
+                                        <h4 class="gallery-title">Comisión NSFW</h4>
+                                        <p class="gallery-description">Contenido para adultos con temática específica solicitada por el cliente.</p>
+                                        <div class="gallery-tags">
+                                            <span class="tag">NSFW</span>
+                                            <span class="tag">Commission</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gallery Item 6 -->
+                        <div class="gallery-item" data-category="personal">
+                            <div class="gallery-image-container">
+                                <div class="gallery-placeholder">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">⭐</span>
+                                        <span class="placeholder-text">PERSONAL #002</span>
+                                        <div class="placeholder-details">
+                                            <p>Original Character</p>
+                                            <p>Concept Art</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-overlay">
+                                    <div class="gallery-info">
+                                        <h4 class="gallery-title">Personaje Original</h4>
+                                        <p class="gallery-description">Desarrollo de personaje original para proyecto personal futuro.</p>
+                                        <div class="gallery-tags">
+                                            <span class="tag">OC</span>
+                                            <span class="tag">Concept</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="load-more-container">
+                        <button class="load-more-btn">
+                            <span class="load-icon">⬇️</span>
+                            <span class="load-text">CARGAR MÁS TRABAJOS</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="section-box">
+                <div class="box-header">
+                    <span class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </span>
+                    <span class="window-title">gallery_stats.json</span>
+                </div>
+                <div class="box-content">
+                    <h3 class="subsection-title">ESTADÍSTICAS DE GALERÍA</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-icon">🎨</div>
+                            <div class="stat-number">127</div>
+                            <div class="stat-label">COMISIONES COMPLETADAS</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">😊</div>
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">CLIENTES SATISFECHOS</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">⏱️</div>
+                            <div class="stat-number">2-14</div>
+                            <div class="stat-label">DÍAS PROMEDIO</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">🔥</div>
+                            <div class="stat-number">45</div>
+                            <div class="stat-label">TRABAJOS ESTE MES</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact CTA -->
+            <div class="contact-cta">
+                <div class="cta-content">
+                    <h3 class="cta-title">¿TE GUSTA LO QUE VES?</h3>
+                    <p class="cta-text">¡Hablemos sobre tu próxima comisión!</p>
+                    <a href="index.html#contact" class="cta-button">
+                        <span class="cta-icon">💬</span>
+                        <span class="cta-button-text">SOLICITAR COMISIÓN</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="footer-text">© 2025 RYUZKA.XYZ - All rights reserved</p>
+                <div class="visitor-counter">
+                    <span class="counter-text">VISITORS: </span>
+                    <span class="counter-number">001337</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

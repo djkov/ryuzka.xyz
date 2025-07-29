@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTADO - RYUZKA.XYZ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with animated title -->
+        <header class="header">
+            <div class="glitch-container">
+                <h1 class="glitch" data-text="RYUZKA.XYZ">RYUZKA.XYZ</h1>
+            </div>
+            <div class="subtitle">
+                <span class="typing-text">ESTADO DE COMISIONES</span>
+                <span class="cursor">|</span>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="index.html" class="nav-link">INICIO</a>
+                <a href="terminos.html" class="nav-link">TÉRMINOS</a>
+                <a href="gallery.html" class="nav-link">GALERÍA</a>
+                <a href="merch.html" class="nav-link">MERCH</a>
+                <a href="status.html" class="nav-link active">ESTADO</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Status Header -->
+            <div class="terms-box">
+                <div class="box-header">
+                    <span class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </span>
+                    <span class="window-title">commission_status.exe</span>
+                </div>
+                <div class="box-content">
+                    <h2 class="section-title">ESTADO DE COMISIONES</h2>
+                    <div class="status-indicator">
+                        <div class="status-dot online"></div>
+                        <div class="status-info">
+                            <span class="status-text">ESTADO ACTUAL: </span>
+                            <span class="status-value online">ACEPTANDO COMISIONES</span>
+                        </div>
+                    </div>
+                    <p class="intro-text">
+                        Aquí puedes ver el estado actual de mis comisiones y proyectos en tiempo real. 
+                        La información se actualiza automáticamente desde mi sistema de gestión de proyectos.
+                        Si tienes alguna comisión en proceso, puedes buscar tu proyecto por <span class="highlight">nombre o código</span>.
+                    </p>
+                    <div class="divider">
+                        <span class="divider-text">TABLERO DE PROYECTOS EN VIVO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Embed Options -->
+            <div class="section-box">
+                <div class="box-header">
+                    <span class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </span>
+                    <span class="window-title">board_selector.cfg</span>
+                </div>
+                <div class="box-content">
+                    <h3 class="subsection-title">SELECCIONAR VISTA</h3>
+                    <div class="board-selector">
+                        <button class="board-btn active" data-board="trello">
+                            <span class="board-icon">📋</span>
+                            <span class="board-text">TRELLO BOARD</span>
+                        </button>
+                        <button class="board-btn" data-board="notion">
+                            <span class="board-icon">📊</span>
+                            <span class="board-text">NOTION DATABASE</span>
+                        </button>
+                        <button class="board-btn" data-board="airtable">
+                            <span class="board-icon">🗃️</span>
+                            <span class="board-text">AIRTABLE</span>
+                        </button>
+                        <button class="board-btn" data-board="github">
+                            <span class="board-icon">🐙</span>
+                            <span class="board-text">GITHUB PROJECTS</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trello Embed -->
+            <div class="section-box embed-container" id="trello-embed">
+                <div class="box-header">
+                    <span class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </span>
+                    <span class="window-title">trello_board.html</span>
+                </div>
+                <div class="box-content">
+                    <div class="embed-info">
+                        <h4 class="embed-title">🔗 CONFIGURACIÓN TRELLO</h4>
+                        <p class="embed-description">
+                            Para usar Trello, necesitas hacer tu board público y obtener el enlace de embedding:
+                        </p>
+                        <div class="embed-steps">
+                            <div class="embed-step">
+                                <span class="step-number">1.</span>
+                                <span class="step-text">Ir a tu Trello board → Menu → More → Print and export</span>
+                            </div>
+                            <div class="embed-step">
+                                <span class="step-number">2.</span>
+                                <span class="step-text">Seleccionar "Export JSON" para obtener datos en tiempo real</span>
+                            </div>
+                            <div class="embed-step">
+                                <span class="step-number">3.</span>
+                                <span class="step-text">O usar Power-Up de embedding para iframe directo</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Trello iframe placeholder -->
+                    <div class="iframe-container">
+                        <div class="iframe-placeholder">
+                            <div class="placeholder-content">
+                                <span class="placeholder-icon">📋</span>
+                                <span class="placeholder-title">TRELLO BOARD</span>
+                                <p class="placeholder-text">
+                                    Reemplaza este div con tu iframe de Trello:<br>
+                                    <code>&lt;iframe src="https://trello.com/b/BOARD_ID.html"&gt;&lt;/iframe&gt;</code>
+                                </p>
+                                <div class="example-board">
+                                    <div class="board-column">
+                                        <div class="column-header">📝 PENDIENTES</div>
+                                        <div class="board-card">Comisión #001 - Character Design</div>
+                                        <div class="board-card">Comisión #004 - Fan Art</div>
+                                    </div>
+                                    <div class="board-column">
+                                        <div class="column-header">🎨 EN PROCESO</div>
+                                        <div class="board-card">Comisión #002 - Couple Art</div>
+                                        <div class="board-card">Comisión #003 - OC Design</div>
+                                    </div>
+                                    <div class="board-column">
+                                        <div class="column-header">✅ COMPLETADAS</div>
+                                        <div class="board-card">Comisión #000 - Portfolio</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notion Embed -->
+            <div class="section-box embed-container" id="notion-embed" style="display: none;">
+                <div class="box-header">
+                    <span class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </span>
+                    <span class="window-title">notion_database.html</span>
+                </div>
+                <div class="box-content">
+                    <div class="embed-info">
+                        <h4 class="embed-title">🔗 CONFIGURACIÓN NOTION</h4>
+                        <p class="embed-description">
+                            Notion permite embeds públicos de databases con vistas personalizadas:
+                        </p>
+                        <div class="embed-steps">
+                            <div class="embed-step">
+                                <span class="step-number">1.</span>
+                                <span class="step-text">Crear una database de comisiones en Notion</span>
+                            </div>
+                            <div class="embed-step">
+                                <span class="step-number">2.</span>
+                                <span class="step-text">Share → Publish to web → Copy link</span>
+                            </div>
+                            <div class="embed-step">
+                                <span class="step-number">3.</span>
+                                <span class="step-text">Usar el link en iframe: https://notion.so/PAGE_ID</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Notion iframe placeholder -->
+                    <div class="iframe-container">
+                        <div class="iframe-placeholder">
+                            <div class="placeholder-content">
+                                <span class="placeholder-icon">📊</span>
+                                <span class="placeholder-title">NOTION DATABASE</span>
+                                <p class="placeholder-text">
+                                    Reemplaza este div con tu iframe de Notion:<br>
+                                    <code>&lt;iframe src="https://notion.so/your-page-id"&gt;&lt;/iframe&gt;</code>
+                                </p>
+                                <div class="example-table">
+                                    <div class="table-header">
+                                        <div class="table-cell">Comisión</div>
+                                        <div class="table-cell">Cliente</div>
+                                        <div class="table-cell">Estado</div>
+                                        <div class="table-cell">Progreso</div>
+                                    </div>
+                                    <div class="table-row">
+                                        <div class="table-cell">#001 Character</div>
+                                        <div class="table-cell">@user123</div>
+                                        <div class="table-cell status-pending">Boceto</div>
+                                        <div class="table-cell">40%</div>
+                                    </div>
+                                    <div class="table-row">
+                                        <div class="table-cell">#002 Couple</div>
+                                        <div class="table-cell">@couple_art</div>
+                                        <div class="table-cell status-progress">Coloreado</div>
+                                        <div class="table-cell">75%</div>
+                                    </div>
+                                    <div class="table-row">
+                                        <div class="table-cell">#003 Fan Art</div>
+                                        <div class="table-cell">@anime_fan</div>
+                                        <div class="table-cell status-complete">Terminado</div>
+                                        <div class="table-cell">100%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Airtable Embed -->
+            <div class="section-box embed-container" id="airtable-embed" style="display: none;">
+                <div class="box-header">
+                    <span class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </span>
+                    <span class="window-title">airtable_base.html</span>
+                </div>
+                <div class="box-content">
+                    <div class="embed-info">
+                        <h4 class="embed-title">🔗 CONFIGURACIÓN AIRTABLE</h4>
+                        <p class="embed-description">
+                            Airtable ofrece embeds de bases públicas con múltiples vistas:
+                        </p>
+                        <div class="embed-steps">
+                            <div class="embed-step">
+                                <span class="step-number">1.</span>
+                                <span class="step-text">Crear base en Airtable con tabla de comisiones</span>
+                            </div>
+                            <div class="embed-step">
+                                <span class="step-number">2.</span>
+                                <span class="step-text">Share → Create a shareable link → Embed this view</span>
+                            </div>
+                            <div class="embed-step">
+                                <span class="step-number">3.</span>
+                                <span class="step-text">Copiar código de embedding generado</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Airtable iframe placeholder -->
+                    <div class="iframe-container">
+                        <div class="iframe-placeholder">
+                            <div class="placeholder-content">
+                                <span class="placeholder-icon">🗃️</span>
+                                <span class="placeholder-title">AIRTABLE BASE</span>
+                                <p class="placeholder-text">
+                                    Airtable genera automáticamente el código de embedding:<br>
+                                    <code>&lt;iframe src="https://airtable.com/embed/BASE_ID"&gt;&lt;/iframe&gt;</code>
+                                </p>
+                                <div class="example-grid">
+                                    <div class="grid-header">📋 COMISIONES - VISTA KANBAN</div>
+                                    <div class="grid-columns">
+                                        <div class="grid-column">
+                                            <div class="column-title">💭 Ideas</div>
+                                            <div class="grid-card">Proyecto Dragon</div>
+                                        </div>
+                                        <div class="grid-column">
+                                            <div class="column-title">🎨 Dibujando</div>
+                                            <div class="grid-card">Comisión Pareja</div>
+                                            <div class="grid-card">Fan Art Anime</div>
+                                        </div>
+                                        <div class="grid-column">
+                                            <div class="column-title">✨ Finalizado</div>
+                                            <div class="grid-card">Portfolio Update</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GitHub Projects Embed -->
+            <div class="section-box embed-container" id="github-embed" style="display: none;">
+                <div class="box-header">
+                    <span class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </span>
+                    <span class="window-title">github_projects.html</span>
+                </div>
+                <div class="box-content">
+                    <div class="embed-info">
+                        <h4 class="embed-title">🔗 CONFIGURACIÓN GITHUB PROJECTS</h4>
+                        <p class="embed-description">
+                            GitHub Projects (Beta) permite embeds públicos de project boards:
+                        </p>
+                        <div class="embed-steps">
+                            <div class="embed-step">
+                                <span class="step-number">1.</span>
+                                <span class="step-text">Crear GitHub Project público</span>
+                            </div>
+                            <div class="embed-step">
+                                <span class="step-number">2.</span>
+                                <span class="step-text">Settings → Visibility → Public</span>
+                            </div>
+                            <div class="embed-step">
+                                <span class="step-number">3.</span>
+                                <span class="step-text">Usar URL: https://github.com/users/USERNAME/projects/ID</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- GitHub iframe placeholder -->
+                    <div class="iframe-container">
+                        <div class="iframe-placeholder">
+                            <div class="placeholder-content">
+                                <span class="placeholder-icon">🐙</span>
+                                <span class="placeholder-title">GITHUB PROJECTS</span>
+                                <p class="placeholder-text">
+                                    Usar la URL pública del proyecto:<br>
+                                    <code>&lt;iframe src="https://github.com/users/ryuzka/projects/1"&gt;&lt;/iframe&gt;</code>
+                                </p>
+                                <div class="example-github">
+                                    <div class="github-header">🚀 Ryuzka Commissions Project</div>
+                                    <div class="github-board">
+                                        <div class="github-column">
+                                            <div class="column-header">📋 Backlog</div>
+                                            <div class="github-issue">
+                                                <span class="issue-title">Commission Request #12</span>
+                                                <span class="issue-label">commission</span>
+                                            </div>
+                                        </div>
+                                        <div class="github-column">
+                                            <div class="column-header">🎨 In Progress</div>
+                                            <div class="github-issue">
+                                                <span class="issue-title">Character Design #11</span>
+                                                <span class="issue-label">in-progress</span>
+                                            </div>
+                                        </div>
+                                        <div class="github-column">
+                                            <div class="column-header">✅ Done</div>
+                                            <div class="github-issue">
+                                                <span class="issue-title">Portfolio Update #10</span>
+                                                <span class="issue-label">completed</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="section-box">
+                <div class="box-header">
+                    <span class="window-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </span>
+                    <span class="window-title">status_metrics.json</span>
+                </div>
+                <div class="box-content">
+                    <h3 class="subsection-title">ESTADÍSTICAS ACTUALES</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-icon">⏳</div>
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">EN COLA</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">🎨</div>
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">EN PROGRESO</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">⚡</div>
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">SLOTS DISPONIBLES</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">📅</div>
+                            <div class="stat-number">7</div>
+                            <div class="stat-label">DÍAS PROMEDIO</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact CTA -->
+            <div class="contact-cta">
+                <div class="cta-content">
+                    <h3 class="cta-title">¿TIENES PREGUNTAS SOBRE TU COMISIÓN?</h3>
+                    <p class="cta-text">Si no encuentras tu proyecto o tienes dudas, contáctame directamente</p>
+                    <a href="index.html#contact" class="cta-button">
+                        <span class="cta-icon">💬</span>
+                        <span class="cta-button-text">CONTACTAR</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="footer-text">© 2025 RYUZKA.XYZ - All rights reserved</p>
+                <div class="visitor-counter">
+                    <span class="counter-text">VISITORS: </span>
+                    <span class="counter-number">001337</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
