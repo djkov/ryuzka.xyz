@@ -3,7 +3,26 @@
 // ~ lost in the internet at 2am in 2003 ~
 // ═══════════════════════════════════════════════
 
+// ═══════════════════════════════════════════════
+// FEATURE FLAGS
+// Set to true to enable features in production
+// ═══════════════════════════════════════════════
+const FEATURE_FLAGS = {
+    GALLERY_ENABLED: false,
+    MERCH_ENABLED: false,
+    STATS_ENABLED: false
+};
+
+// Expose to window for console access
+window.FEATURE_FLAGS = FEATURE_FLAGS;
+window.refreshFF = function() {
+    applyFeatureFlags();
+    console.log('Feature flags refreshed!', FEATURE_FLAGS);
+};
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Apply feature flags
+    applyFeatureFlags();
     // Set typing text immediately (no animation)
     const typingText = document.querySelector('.typing-text');
     if (typingText) {
@@ -33,6 +52,45 @@ document.addEventListener('DOMContentLoaded', function() {
     // Status functionality
     initializeStatus();
 });
+
+// ═══════════════════════════════════════════════
+// FEATURE FLAGS HANDLER
+// ═══════════════════════════════════════════════
+function applyFeatureFlags() {
+    // Hide Gallery elements if disabled
+    if (!FEATURE_FLAGS.GALLERY_ENABLED) {
+        // Hide nav links to gallery
+        document.querySelectorAll('a[href="gallery.html"]').forEach(el => {
+            el.style.display = 'none';
+        });
+        // Hide quick links to gallery
+        document.querySelectorAll('.quick-link[href="gallery.html"]').forEach(el => {
+            el.style.display = 'none';
+        });
+    }
+
+    // Hide Merch elements if disabled
+    if (!FEATURE_FLAGS.MERCH_ENABLED) {
+        // Hide nav links to merch
+        document.querySelectorAll('a[href="merch.html"]').forEach(el => {
+            el.style.display = 'none';
+        });
+    }
+
+    // Hide Stats section if disabled
+    if (!FEATURE_FLAGS.STATS_ENABLED) {
+        // Hide the statistics box on the status page
+        document.querySelectorAll('.subsection-title').forEach(el => {
+            if (el.textContent.includes('ESTADÍSTICAS ACTUALES')) {
+                // Hide the parent section-box container
+                const statsBox = el.closest('.section-box');
+                if (statsBox) {
+                    statsBox.style.display = 'none';
+                }
+            }
+        });
+    }
+}
 
 // ═══════════════════════════════════════════════
 // MERCH FUNCTIONS
