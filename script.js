@@ -58,46 +58,200 @@ document.addEventListener('DOMContentLoaded', function() {
 // FEATURE FLAGS HANDLER
 // ═══════════════════════════════════════════════
 function applyFeatureFlags() {
-    // Hide Gallery elements if disabled
-    if (!FEATURE_FLAGS.GALLERY_ENABLED) {
-        // Hide nav links to gallery
-        document.querySelectorAll('a[href="gallery.html"]').forEach(el => {
-            el.style.display = 'none';
-        });
-        // Hide quick links to gallery
-        document.querySelectorAll('.quick-link[href="gallery.html"]').forEach(el => {
-            el.style.display = 'none';
-        });
-    }
+    // Gallery elements
+    document.querySelectorAll('a[href="gallery.html"]').forEach(el => {
+        el.style.display = FEATURE_FLAGS.GALLERY_ENABLED ? '' : 'none';
+    });
+    document.querySelectorAll('.quick-link[href="gallery.html"]').forEach(el => {
+        el.style.display = FEATURE_FLAGS.GALLERY_ENABLED ? '' : 'none';
+    });
 
-    // Hide Merch elements if disabled
-    if (!FEATURE_FLAGS.MERCH_ENABLED) {
-        // Hide nav links to merch
-        document.querySelectorAll('a[href="merch.html"]').forEach(el => {
-            el.style.display = 'none';
-        });
-    }
+    // Merch elements
+    document.querySelectorAll('a[href="merch.html"]').forEach(el => {
+        el.style.display = FEATURE_FLAGS.MERCH_ENABLED ? '' : 'none';
+    });
 
-    // Hide Stats section if disabled
-    if (!FEATURE_FLAGS.STATS_ENABLED) {
-        // Hide the statistics box on the status page
-        document.querySelectorAll('.subsection-title').forEach(el => {
-            if (el.textContent.includes('ESTADÍSTICAS ACTUALES')) {
-                // Hide the parent section-box container
-                const statsBox = el.closest('.section-box');
-                if (statsBox) {
-                    statsBox.style.display = 'none';
-                }
+    // Stats section
+    document.querySelectorAll('.subsection-title').forEach(el => {
+        if (el.textContent.includes('ESTADÍSTICAS ACTUALES')) {
+            const statsBox = el.closest('.section-box');
+            if (statsBox) {
+                statsBox.style.display = FEATURE_FLAGS.STATS_ENABLED ? '' : 'none';
             }
-        });
-    }
+        }
+    });
 
-    // Hide Visitor Counter if disabled
-    if (!FEATURE_FLAGS.VISITOR_COUNTER_ENABLED) {
-        document.querySelectorAll('.visitor-counter').forEach(el => {
-            el.style.display = 'none';
-        });
+    // Visitor Counter
+    document.querySelectorAll('.visitor-counter').forEach(el => {
+        el.style.display = FEATURE_FLAGS.VISITOR_COUNTER_ENABLED ? '' : 'none';
+    });
+
+    // Update panel checkboxes if panel exists
+    updateFFPanel();
+}
+
+// ═══════════════════════════════════════════════
+// KONAMI CODE - SECRET FEATURE FLAGS PANEL
+// ↑ ↑ ↓ ↓ ← → ← → B A
+// ═══════════════════════════════════════════════
+const KONAMI_CODE = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+let konamiIndex = 0;
+
+document.addEventListener('keydown', function(e) {
+    if (e.code === KONAMI_CODE[konamiIndex]) {
+        konamiIndex++;
+        if (konamiIndex === KONAMI_CODE.length) {
+            konamiIndex = 0;
+            toggleFFPanel();
+        }
+    } else {
+        konamiIndex = 0;
     }
+});
+
+function toggleFFPanel() {
+    let panel = document.getElementById('ff-panel');
+    if (panel) {
+        panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    } else {
+        createFFPanel();
+    }
+}
+
+function createFFPanel() {
+    const panel = document.createElement('div');
+    panel.id = 'ff-panel';
+    panel.innerHTML = `
+        <div class="ff-panel-header">
+            <span>[*] FEATURE FLAGS</span>
+            <button class="ff-close" onclick="document.getElementById('ff-panel').style.display='none'">[X]</button>
+        </div>
+        <div class="ff-panel-content">
+            <label class="ff-option">
+                <input type="checkbox" id="ff-gallery" ${FEATURE_FLAGS.GALLERY_ENABLED ? 'checked' : ''}>
+                <span>GALERÍA</span>
+            </label>
+            <label class="ff-option">
+                <input type="checkbox" id="ff-merch" ${FEATURE_FLAGS.MERCH_ENABLED ? 'checked' : ''}>
+                <span>MERCH</span>
+            </label>
+            <label class="ff-option">
+                <input type="checkbox" id="ff-stats" ${FEATURE_FLAGS.STATS_ENABLED ? 'checked' : ''}>
+                <span>ESTADÍSTICAS</span>
+            </label>
+            <label class="ff-option">
+                <input type="checkbox" id="ff-visitor" ${FEATURE_FLAGS.VISITOR_COUNTER_ENABLED ? 'checked' : ''}>
+                <span>CONTADOR VISITAS</span>
+            </label>
+        </div>
+        <div class="ff-panel-footer">
+            <span class="ff-hint">↑↑↓↓←→←→BA</span>
+        </div>
+    `;
+    
+    panel.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #0a0a0a;
+        border: 2px solid #00ff00;
+        font-family: 'Courier Prime', monospace;
+        z-index: 9999;
+        min-width: 200px;
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    `;
+    
+    document.body.appendChild(panel);
+    
+    // Add styles
+    const style = document.createElement('style');
+    style.textContent = `
+        #ff-panel .ff-panel-header {
+            background: #00ff00;
+            color: #0a0a0a;
+            padding: 8px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        #ff-panel .ff-close {
+            background: none;
+            border: none;
+            color: #0a0a0a;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+        }
+        #ff-panel .ff-close:hover {
+            color: #ff0000;
+        }
+        #ff-panel .ff-panel-content {
+            padding: 15px;
+        }
+        #ff-panel .ff-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #00ff00;
+            font-size: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        #ff-panel .ff-option:last-child {
+            margin-bottom: 0;
+        }
+        #ff-panel .ff-option input {
+            accent-color: #00ff00;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        #ff-panel .ff-panel-footer {
+            border-top: 1px solid #333;
+            padding: 8px 10px;
+            text-align: center;
+        }
+        #ff-panel .ff-hint {
+            color: #666;
+            font-size: 10px;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Add event listeners
+    document.getElementById('ff-gallery').addEventListener('change', function() {
+        FEATURE_FLAGS.GALLERY_ENABLED = this.checked;
+        applyFeatureFlags();
+    });
+    document.getElementById('ff-merch').addEventListener('change', function() {
+        FEATURE_FLAGS.MERCH_ENABLED = this.checked;
+        applyFeatureFlags();
+    });
+    document.getElementById('ff-stats').addEventListener('change', function() {
+        FEATURE_FLAGS.STATS_ENABLED = this.checked;
+        applyFeatureFlags();
+    });
+    document.getElementById('ff-visitor').addEventListener('change', function() {
+        FEATURE_FLAGS.VISITOR_COUNTER_ENABLED = this.checked;
+        applyFeatureFlags();
+    });
+}
+
+function updateFFPanel() {
+    const panel = document.getElementById('ff-panel');
+    if (!panel) return;
+    
+    const gallery = document.getElementById('ff-gallery');
+    const merch = document.getElementById('ff-merch');
+    const stats = document.getElementById('ff-stats');
+    const visitor = document.getElementById('ff-visitor');
+    
+    if (gallery) gallery.checked = FEATURE_FLAGS.GALLERY_ENABLED;
+    if (merch) merch.checked = FEATURE_FLAGS.MERCH_ENABLED;
+    if (stats) stats.checked = FEATURE_FLAGS.STATS_ENABLED;
+    if (visitor) visitor.checked = FEATURE_FLAGS.VISITOR_COUNTER_ENABLED;
 }
 
 // ═══════════════════════════════════════════════
