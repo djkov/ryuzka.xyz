@@ -24,6 +24,12 @@ window.refreshFF = function() {
 document.addEventListener('DOMContentLoaded', function() {
     // Apply feature flags
     applyFeatureFlags();
+
+    // Update copyright year dynamically
+    document.querySelectorAll('.copyright-year').forEach(el => {
+        el.textContent = new Date().getFullYear();
+    });
+
     // Set typing text immediately (no animation)
     const typingText = document.querySelector('.typing-text');
     if (typingText) {
