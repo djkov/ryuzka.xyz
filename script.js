@@ -10,7 +10,8 @@
 const FEATURE_FLAGS = {
     GALLERY_ENABLED: false,
     MERCH_ENABLED: false,
-    STATS_ENABLED: false
+    STATS_ENABLED: false,
+    VISITOR_COUNTER_ENABLED: false
 };
 
 // Expose to window for console access
@@ -88,6 +89,13 @@ function applyFeatureFlags() {
                     statsBox.style.display = 'none';
                 }
             }
+        });
+    }
+
+    // Hide Visitor Counter if disabled
+    if (!FEATURE_FLAGS.VISITOR_COUNTER_ENABLED) {
+        document.querySelectorAll('.visitor-counter').forEach(el => {
+            el.style.display = 'none';
         });
     }
 }
